@@ -1,4 +1,6 @@
 import classes from "./AvailableMeals.module.css";
+import Card from "../UI/Card";
+import MealItem from "./MealItem/MealItem";
 
 //static database
 const DUMMY_MEALS = [
@@ -29,12 +31,22 @@ const DUMMY_MEALS = [
 ];
 
 const AvailableMeals = () => {
-  //mapping meal names to <li> elements
-  const mealsList = DUMMY_MEALS.map((meal) => <li>{meal.name}</li>);
+  //mapping meal names to <li> elements in MealItem component js file
+  const mealsList = DUMMY_MEALS.map((meal) => (
+    <MealItem
+      id={meal.id}
+      key={meal.id}
+      name={meal.name}
+      description={meal.description}
+      price={meal.price}
+    ></MealItem>
+  ));
 
   return (
     <section className={classes.meals}>
-      <ul>{mealsList}</ul>
+      <Card>
+        <ul>{mealsList}</ul>
+      </Card>
     </section>
   );
 };
