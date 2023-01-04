@@ -3,14 +3,17 @@ import classes from "./MealsSummary.module.css";
 const MealsSummary = () => {
   return (
     <section className={classes.summary}>
-      <h2>Delicious Food, Delivered To You</h2>
+      <h2>Welcome to the best restaurant in town!</h2>
       <p>
-        Choose your favorite meal from our broad selection of available meals
-        and enjoy a delicious lunch or dinner at home.
+        Our menu is filled with delicious options for breakfast, lunch, and
+        dinner. Our chefs use only the freshest ingredients to prepare every
+        dish, ensuring that every bite is bursting with flavor.
       </p>
       <p>
-        All our meals are cooked with high-quality ingredients, just-in-time and
-        of course by experienced chefs!
+        Looking for something light? Try our garden salad, made with crisp
+        greens and topped with your choice of dressing. Or, if you're in the
+        mood for something heartier, our burgers and sandwiches are sure to
+        satisfy.
       </p>
     </section>
   );
