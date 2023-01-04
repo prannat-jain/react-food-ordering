@@ -10,6 +10,7 @@ const defaultCartState = {
 
 //action is dispatched by us later in code, state is the last state snapshot of the state managed by the user
 const cartReducer = (state, action) => {
+  //logic for increasing quantity in the cart
   if (action.type === "ADD") {
     //concat gives a new array to be updated
     const updatedTotalAmount =
@@ -42,6 +43,36 @@ const cartReducer = (state, action) => {
       totalAmount: updatedTotalAmount,
     };
   }
+
+  //logic for decreasing quantity in the cart
+  if (action.type === "REMOVE") {
+    const existingCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.id
+    );
+
+    const existingCartItem = state.items[existingCartItemIndex];
+    //on clicking remove button, price of one item is decreased from total
+    const updatedTotalAmount = state.totalAmount - existingCartItem.price;
+
+    let updatedItems;
+    if (existingCartItem.amount === 1) {
+      //when the action id(item to be removed) is not equal to every other item in the cart, keep those items and filter out rest
+      updatedItems = state.items.filter((item) => item.id !== action.id);
+    } else {
+      const updatedItem = {
+        ...existingCartItem,
+        amount: existingCartItem.amount - 1,
+      };
+      updatedItems = [...state.items];
+      updatedItems[existingCartItemIndex] = updatedItem;
+    }
+
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount,
+    };
+  }
+
   return defaultCartState;
 };
 
