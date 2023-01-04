@@ -3,7 +3,8 @@ import CartIcon from "../Cart/CartIcon";
 
 const HeaderCartButton = (props) => {
   return (
-    <button className={classes.button}>
+    //onclick coming from props is passed to inbuilt onclick of button tag in html
+    <button className={classes.button} onClick={props.onClick}>
       <span className={classes.icon}>
         <CartIcon></CartIcon>
       </span>
